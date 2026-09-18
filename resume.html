@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Haziq Hanif — Full-Stack Web Developer Resume">
+  <title>Haziq Hanif — Resume</title>
+  <style>
+    :root{
+      --bg:#080b12;
+      --card:#10151f;
+      --stroke:#232b39;
+      --text:#f5f7fb;
+      --muted:#a7afbc;
+      --blue:#0a84ff;
+      --cyan:#65e7ff;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Arial,sans-serif;
+      background:linear-gradient(180deg,#080b12,#0d111a);
+      color:var(--text);
+      line-height:1.65;
+      padding:36px 18px;
+    }
+    .page{
+      width:min(920px,100%);
+      margin:auto;
+      background:var(--card);
+      border:1px solid var(--stroke);
+      border-radius:28px;
+      overflow:hidden;
+      box-shadow:0 30px 90px rgba(0,0,0,.35);
+    }
+    header{
+      padding:42px;
+      background:
+        radial-gradient(circle at 80% 15%,rgba(10,132,255,.22),transparent 28%),
+        linear-gradient(135deg,#0b101a,#111827);
+      border-bottom:1px solid var(--stroke);
+    }
+    h1{font-size:44px;letter-spacing:-2px;line-height:1}
+    .role{margin-top:10px;color:var(--cyan);font-weight:700}
+    .intro{margin-top:18px;max-width:720px;color:var(--muted)}
+    .links{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+    .link{
+      display:inline-flex;
+      padding:9px 13px;
+      border:1px solid var(--stroke);
+      border-radius:999px;
+      color:#e8ecf3;
+      text-decoration:none;
+      font-size:12px;
+      font-weight:700;
+    }
+    main{padding:38px 42px}
+    section+section{margin-top:34px}
+    h2{font-size:20px;margin-bottom:13px;letter-spacing:-.4px}
+    h3{font-size:16px;margin-bottom:6px}
+    p,li{color:var(--muted)}
+    ul{padding-left:20px}
+    .chips{display:flex;gap:8px;flex-wrap:wrap}
+    .chip{
+      padding:7px 10px;
+      border-radius:999px;
+      background:#151c29;
+      border:1px solid var(--stroke);
+      color:#dbe1ea;
+      font-size:12px;
+      font-weight:700;
+    }
+    .project{
+      padding:20px;
+      border:1px solid var(--stroke);
+      border-radius:20px;
+      background:#0c111a;
+    }
+    .project p{margin-top:8px}
+    .project ul{margin-top:12px}
+    .print-row{display:flex;justify-content:flex-end;margin-bottom:18px}
+    button{
+      border:0;border-radius:999px;padding:10px 15px;
+      background:var(--blue);color:white;font-weight:700;cursor:pointer
+    }
+    @media(max-width:620px){
+      header,main{padding:28px 22px}
+      h1{font-size:36px}
+    }
+    @media print{
+      body{background:#fff;color:#111;padding:0}
+      .page{width:100%;border:0;border-radius:0;box-shadow:none;background:#fff}
+      header{background:#fff;color:#111;border-bottom:1px solid #ddd}
+      main{padding:26px 34px}
+      p,li{color:#444}
+      .role{color:#0a66c2}
+      .link{color:#111;border-color:#ccc}
+      .project{background:#fff;border-color:#ddd}
+      .chip{background:#f5f5f5;color:#222;border-color:#ddd}
+      .print-row{display:none}
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <h1>Haziq Hanif</h1>
+      <div class="role">Full-Stack Web Developer</div>
+      <p class="intro">
+        Full-stack developer focused on building responsive, practical web applications
+        from frontend interfaces through backend APIs, authentication, databases and deployment.
+      </p>
+      <div class="links">
+        <a class="link" href="mailto:haziqhanif13@gmail.com">haziqhanif13@gmail.com</a>
+        <span class="link">LinkedIn: Haziq Hanif</span>
+        <a class="link" href="https://github.com/HaziqHanif" target="_blank" rel="noreferrer">GitHub</a>
+        <a class="link" href="https://haziqhanif.github.io/portfolio/" target="_blank" rel="noreferrer">Portfolio</a>
+        <a class="link" href="https://ziqtech-e-commerce.onrender.com" target="_blank" rel="noreferrer">Live ZiqTech</a>
+        <a class="link" href="https://github.com/HaziqHanif/ZiqTech-E-Commerce" target="_blank" rel="noreferrer">Source Code</a>
+      </div>
+    </header>
+
+    <main>
+      <div class="print-row">
+        <button onclick="window.print()">Print / Save PDF</button>
+      </div>
+
+      <section>
+        <h2>Technical Skills</h2>
+        <div class="chips">
+          <span class="chip">HTML5</span>
+          <span class="chip">CSS3</span>
+          <span class="chip">JavaScript</span>
+          <span class="chip">Node.js</span>
+          <span class="chip">Express.js</span>
+          <span class="chip">PostgreSQL</span>
+          <span class="chip">REST APIs</span>
+          <span class="chip">Git</span>
+          <span class="chip">GitHub</span>
+          <span class="chip">Render</span>
+        </div>
+      </section>
+
+      <section>
+        <h2>Featured Project</h2>
+        <div class="project">
+          <h3>ZiqTech — Full-Stack E-Commerce Platform</h3>
+          <p>
+            A full-stack technology e-commerce application built from scratch with
+            customer-facing shopping flows, backend APIs, PostgreSQL persistence and
+            administrative tools.
+          </p>
+          <ul>
+            <li>Customer and admin authentication</li>
+            <li>Product catalogue, search, product variants and inventory</li>
+            <li>Wishlist and stock-aware cart flows</li>
+            <li>Checkout, order management and invoice generation</li>
+            <li>Customer profiles and administrative user management</li>
+            <li>Node.js + Express backend with PostgreSQL</li>
+            <li>Git/GitHub workflow and live deployment on Render</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <h2>Development Approach</h2>
+        <ul>
+          <li>Build responsive interfaces around clear user flows</li>
+          <li>Connect frontend behaviour to backend business logic and APIs</li>
+          <li>Use persistent database storage for users, products and orders</li>
+          <li>Test locally, version changes with Git and deploy working updates</li>
+        </ul>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
