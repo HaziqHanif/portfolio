@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Haziq Hanif — Full-Stack Web Developer portfolio." />
+  <title>Haziq Hanif — Full-Stack Web Developer</title>
+
+  <style>
+    :root{
+      --bg:#06080d;
+      --bg2:#0b1020;
+      --card:rgba(255,255,255,.07);
+      --card2:rgba(255,255,255,.045);
+      --stroke:rgba(255,255,255,.11);
+      --text:#f5f7fb;
+      --muted:#a9b0bd;
+      --blue:#0a84ff;
+      --cyan:#55e7ff;
+      --violet:#7c5cff;
+      --green:#39d98a;
+      --radius:28px;
+      --shadow:0 30px 90px rgba(0,0,0,.35);
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+
+    html{scroll-behavior:smooth}
+
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Arial,sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 12% 0%,rgba(10,132,255,.15),transparent 28%),
+        radial-gradient(circle at 88% 13%,rgba(124,92,255,.12),transparent 25%),
+        linear-gradient(180deg,var(--bg),#090d16 45%,#07090e);
+      min-height:100vh;
+      overflow-x:hidden;
+    }
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      z-index:-1;
+      opacity:.18;
+      background-image:
+        linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+      background-size:42px 42px;
+      mask-image:linear-gradient(to bottom,#000,transparent 90%);
+    }
+
+    a{color:inherit;text-decoration:none}
+
+    .container{
+      width:min(1180px,calc(100% - 36px));
+      margin:auto;
+    }
+
+    nav{
+      position:sticky;
+      top:14px;
+      z-index:100;
+      width:min(1180px,calc(100% - 28px));
+      height:64px;
+      margin:14px auto 0;
+      padding:0 18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      border:1px solid var(--stroke);
+      border-radius:20px;
+      background:rgba(9,12,20,.72);
+      backdrop-filter:blur(20px) saturate(150%);
+      box-shadow:0 14px 50px rgba(0,0,0,.22);
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:850;
+      letter-spacing:-.6px;
+    }
+
+    .brand-mark{
+      width:34px;
+      height:34px;
+      border-radius:11px;
+      display:grid;
+      place-items:center;
+      background:linear-gradient(135deg,var(--blue),var(--violet));
+      box-shadow:0 8px 22px rgba(10,132,255,.3);
+      font-size:14px;
+    }
+
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:24px;
+      color:#c7ccd6;
+      font-size:13px;
+    }
+
+    .nav-links a{transition:.2s}
+    .nav-links a:hover{color:#fff}
+
+    .nav-cta{
+      padding:10px 16px;
+      border-radius:999px;
+      background:#fff;
+      color:#080b11;
+      font-weight:750;
+      font-size:13px;
+    }
+
+    .hero{
+      min-height:720px;
+      display:grid;
+      align-items:center;
+      padding:95px 0 70px;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:minmax(0,1.08fr) minmax(390px,.92fr);
+      gap:58px;
+      align-items:center;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      margin-bottom:22px;
+      padding:8px 13px;
+      border-radius:999px;
+      border:1px solid rgba(85,231,255,.18);
+      background:rgba(255,255,255,.05);
+      color:#a7f3ff;
+      font-size:11px;
+      font-weight:800;
+      letter-spacing:1.4px;
+      text-transform:uppercase;
+    }
+
+    .eyebrow-dot{
+      width:6px;
+      height:6px;
+      border-radius:50%;
+      background:var(--cyan);
+      box-shadow:0 0 16px rgba(85,231,255,.9);
+    }
+
+    h1{
+      max-width:760px;
+      font-size:clamp(58px,8vw,102px);
+      line-height:.92;
+      letter-spacing:-6px;
+      font-weight:900;
+      text-wrap:balance;
+    }
+
+    .gradient{
+      background:linear-gradient(90deg,#fff 2%,#72e6ff 42%,#5d8fff 67%,#a28cff);
+      -webkit-background-clip:text;
+      background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+
+    .hero-copy{
+      max-width:650px;
+      margin-top:26px;
+      color:var(--muted);
+      font-size:18px;
+      line-height:1.75;
+    }
+
+    .hero-actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:32px;
+    }
+
+    .btn{
+      min-height:50px;
+      padding:0 21px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:999px;
+      font-size:14px;
+      font-weight:780;
+      transition:.25s;
+    }
+
+    .btn:hover{transform:translateY(-3px)}
+
+    .btn-primary{
+      background:linear-gradient(135deg,var(--blue),#5c5cff);
+      box-shadow:0 16px 40px rgba(10,132,255,.26);
+    }
+
+    .btn-secondary{
+      border:1px solid var(--stroke);
+      background:rgba(255,255,255,.055);
+      color:#e6e9ef;
+    }
+
+    .mini-stats{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:28px;
+    }
+
+    .stat-pill{
+      display:flex;
+      align-items:center;
+      gap:7px;
+      padding:9px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+      color:#b7bdc8;
+      font-size:12px;
+      font-weight:650;
+    }
+
+    .stat-pill span{color:var(--green)}
+
+    .hero-visual{
+      position:relative;
+      min-height:520px;
+    }
+
+    .orb{
+      position:absolute;
+      border-radius:50%;
+      filter:blur(1px);
+    }
+
+    .orb.one{
+      width:300px;height:300px;right:10px;top:30px;
+      background:radial-gradient(circle at 35% 30%,#4ed8ff,#0a84ff 42%,#4d36d9 75%,transparent 76%);
+      box-shadow:0 0 100px rgba(10,132,255,.28);
+      opacity:.8;
+    }
+
+    .orb.two{
+      width:150px;height:150px;left:15px;bottom:48px;
+      background:radial-gradient(circle at 30% 30%,#c6b9ff,#7c5cff 55%,#4026a8);
+      opacity:.72;
+      box-shadow:0 0 70px rgba(124,92,255,.25);
+    }
+
+    .code-card{
+      position:absolute;
+      inset:78px 22px 54px 45px;
+      padding:24px;
+      border:1px solid var(--stroke);
+      border-radius:30px;
+      background:linear-gradient(180deg,rgba(17,22,35,.88),rgba(9,12,20,.88));
+      backdrop-filter:blur(24px);
+      box-shadow:var(--shadow);
+      transform:rotate(-3deg);
+      overflow:hidden;
+    }
+
+    .code-card::after{
+      content:"";
+      position:absolute;
+      width:240px;height:240px;
+      right:-90px;bottom:-100px;
+      border-radius:50%;
+      background:rgba(10,132,255,.17);
+      filter:blur(35px);
+    }
+
+    .window-bar{display:flex;gap:7px;margin-bottom:28px}
+    .window-dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.22)}
+    .code-line{height:11px;border-radius:999px;background:rgba(255,255,255,.09);margin:14px 0}
+    .code-line.blue{background:linear-gradient(90deg,rgba(10,132,255,.85),rgba(85,231,255,.35));width:74%}
+    .code-line.violet{background:linear-gradient(90deg,rgba(124,92,255,.8),rgba(255,255,255,.08));width:56%}
+    .code-line.short{width:42%}
+    .code-line.mid{width:66%}
+    .code-line.long{width:88%}
+
+    .floating-card{
+      position:absolute;
+      padding:16px 18px;
+      border:1px solid var(--stroke);
+      border-radius:18px;
+      background:rgba(8,11,18,.82);
+      backdrop-filter:blur(18px);
+      box-shadow:0 18px 50px rgba(0,0,0,.28);
+    }
+
+    .floating-card strong{display:block;font-size:13px;margin-bottom:4px}
+    .floating-card span{font-size:11px;color:var(--muted)}
+    .floating-card.top{right:-12px;top:32px}
+    .floating-card.bottom{left:-10px;bottom:22px}
+
+    section{padding:95px 0}
+
+    .section-kicker{
+      color:#7eeeff;
+      text-transform:uppercase;
+      letter-spacing:1.6px;
+      font-size:11px;
+      font-weight:850;
+      margin-bottom:12px;
+    }
+
+    .section-title{
+      max-width:820px;
+      font-size:clamp(38px,5vw,62px);
+      line-height:1;
+      letter-spacing:-3px;
+      font-weight:870;
+    }
+
+    .section-copy{
+      max-width:720px;
+      margin-top:17px;
+      color:var(--muted);
+      line-height:1.75;
+      font-size:16px;
+    }
+
+    .about-grid{
+      margin-top:38px;
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:20px;
+    }
+
+    .glass-card{
+      border:1px solid var(--stroke);
+      border-radius:var(--radius);
+      background:linear-gradient(180deg,rgba(255,255,255,.065),rgba(255,255,255,.035));
+      box-shadow:0 20px 65px rgba(0,0,0,.18);
+    }
+
+    .about-card{padding:28px}
+    .about-card h3{font-size:22px;margin-bottom:13px}
+    .about-card p{color:var(--muted);line-height:1.75}
+
+    .stack{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:20px;
+    }
+
+    .chip{
+      padding:9px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.09);
+      background:rgba(255,255,255,.045);
+      color:#d6dbe4;
+      font-size:12px;
+      font-weight:700;
+    }
+
+    .project{
+      margin-top:42px;
+      overflow:hidden;
+    }
+
+    .project-visual{
+      min-height:390px;
+      position:relative;
+      padding:28px;
+      background:
+        radial-gradient(circle at 80% 16%,rgba(10,132,255,.27),transparent 27%),
+        radial-gradient(circle at 18% 80%,rgba(124,92,255,.20),transparent 25%),
+        linear-gradient(135deg,#08101e,#0a0d14);
+      border-bottom:1px solid var(--stroke);
+    }
+
+    .browser{
+      width:min(880px,92%);
+      margin:30px auto 0;
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:22px;
+      background:#f6f7f9;
+      overflow:hidden;
+      box-shadow:0 35px 90px rgba(0,0,0,.4);
+    }
+
+    .browser-top{
+      height:40px;
+      display:flex;
+      align-items:center;
+      gap:7px;
+      padding:0 14px;
+      background:#fff;
+      border-bottom:1px solid #e5e7eb;
+    }
+
+    .browser-top i{width:8px;height:8px;border-radius:50%;background:#cfd3da}
+    .browser-body{
+      height:235px;
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      background:
+        radial-gradient(circle at 70% 24%,rgba(10,132,255,.21),transparent 25%),
+        linear-gradient(135deg,#06080d,#0d1324);
+    }
+
+    .browser-copy{padding:36px 30px}
+    .browser-copy small{color:#70e6ff;font-weight:800}
+    .browser-copy h4{
+      margin-top:9px;
+      font-size:34px;
+      line-height:.96;
+      letter-spacing:-2px;
+    }
+    .browser-copy p{margin-top:12px;color:#aeb7c7;font-size:11px;line-height:1.55}
+
+    .browser-product{
+      display:grid;
+      place-items:center;
+      position:relative;
+    }
+    .device{
+      width:170px;
+      height:108px;
+      border-radius:10px;
+      background:linear-gradient(145deg,#202735,#090b10);
+      border:6px solid #252b35;
+      box-shadow:0 25px 50px rgba(0,0,0,.45);
+      transform:perspective(800px) rotateY(-10deg) rotateX(5deg);
+    }
+
+    .project-content{
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:30px;
+      padding:32px;
+    }
+
+    .project-content h3{
+      font-size:32px;
+      letter-spacing:-1.3px;
+      margin-bottom:12px;
+    }
+
+    .project-content p{color:var(--muted);line-height:1.72}
+
+    .feature-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:10px;
+    }
+
+    .feature{
+      padding:14px;
+      border-radius:16px;
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.075);
+      color:#d8dde7;
+      font-size:12px;
+      font-weight:700;
+    }
+
+    .project-actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:22px;
+    }
+
+    .architecture{
+      margin-top:38px;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:16px;
+    }
+
+    .arch-card{padding:23px}
+    .arch-number{
+      width:36px;height:36px;
+      border-radius:12px;
+      display:grid;place-items:center;
+      margin-bottom:17px;
+      background:rgba(10,132,255,.13);
+      color:#86d5ff;
+      font-size:12px;
+      font-weight:850;
+    }
+    .arch-card h3{font-size:18px;margin-bottom:8px}
+    .arch-card p{color:var(--muted);font-size:13px;line-height:1.65}
+
+    .contact-card{
+      padding:55px;
+      text-align:center;
+      background:
+        radial-gradient(circle at 20% 20%,rgba(10,132,255,.16),transparent 28%),
+        radial-gradient(circle at 80% 80%,rgba(124,92,255,.14),transparent 28%),
+        rgba(255,255,255,.045);
+    }
+
+    .contact-card h2{
+      font-size:clamp(40px,6vw,72px);
+      letter-spacing:-4px;
+      line-height:.95;
+    }
+
+    .contact-card p{
+      max-width:630px;
+      margin:18px auto 0;
+      color:var(--muted);
+      line-height:1.7;
+    }
+
+    .contact-actions{
+      display:flex;
+      justify-content:center;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:28px;
+    }
+
+    footer{
+      padding:32px 0 42px;
+      color:#7e8795;
+      font-size:12px;
+      text-align:center;
+    }
+
+    .reveal{
+      opacity:0;
+      transform:translateY(22px);
+      transition:.7s ease;
+    }
+    .reveal.visible{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    @media(max-width:900px){
+      .hero-grid,
+      .about-grid,
+      .project-content{
+        grid-template-columns:1fr;
+      }
+      .hero-visual{min-height:450px}
+      .architecture{grid-template-columns:1fr}
+      .nav-links{display:none}
+    }
+
+    @media(max-width:620px){
+      nav{height:58px}
+      .hero{padding-top:70px}
+      h1{font-size:58px;letter-spacing:-4px}
+      .hero-copy{font-size:16px}
+      .hero-visual{min-height:390px}
+      .code-card{inset:60px 4px 48px 12px}
+      .floating-card.top{right:0}
+      .floating-card.bottom{left:0}
+      .project-visual{min-height:300px;padding:12px}
+      .browser{width:100%;margin-top:22px}
+      .browser-body{height:190px}
+      .browser-copy{padding:24px 20px}
+      .browser-copy h4{font-size:26px}
+      .device{width:120px;height:76px}
+      .feature-grid{grid-template-columns:1fr}
+      .contact-card{padding:36px 20px}
+      section{padding:75px 0}
+    }
+
+    @media(prefers-reduced-motion:reduce){
+      *{scroll-behavior:auto!important;transition:none!important;animation:none!important}
+      .reveal{opacity:1;transform:none}
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="#top" class="brand">
+      <span class="brand-mark">H</span>
+      <span>Haziq Hanif</span>
+    </a>
+
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#project">Project</a>
+      <a href="#stack">Stack</a>
+      <a href="#contact">Contact</a>
+    </div>
+
+    <a class="nav-cta" href="https://github.com/HaziqHanif" target="_blank" rel="noreferrer">
+      GitHub ↗
+    </a>
+  </nav>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">
+            <span class="eyebrow-dot"></span>
+            Full-Stack Web Developer
+          </div>
+
+          <h1>
+            I build digital
+            <span class="gradient">experiences.</span>
+          </h1>
+
+          <p class="hero-copy">
+            I design and build responsive web applications from frontend interfaces
+            to backend APIs and databases, with a focus on clean user experience,
+            practical functionality and reliable full-stack architecture.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#project">View Featured Project →</a>
+            <a class="btn btn-secondary" href="https://ziqtech-e-commerce.onrender.com" target="_blank" rel="noreferrer">
+              Live ZiqTech Demo ↗
+            </a>
+          </div>
+
+          <div class="mini-stats">
+            <div class="stat-pill"><span>✓</span> Frontend</div>
+            <div class="stat-pill"><span>✓</span> REST API</div>
+            <div class="stat-pill"><span>✓</span> PostgreSQL</div>
+            <div class="stat-pill"><span>✓</span> Deployment</div>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <div class="orb one"></div>
+          <div class="orb two"></div>
+
+          <div class="code-card">
+            <div class="window-bar">
+              <span class="window-dot"></span>
+              <span class="window-dot"></span>
+              <span class="window-dot"></span>
+            </div>
+            <div class="code-line blue"></div>
+            <div class="code-line mid"></div>
+            <div class="code-line violet"></div>
+            <div class="code-line long"></div>
+            <div class="code-line short"></div>
+            <div class="code-line blue"></div>
+            <div class="code-line mid"></div>
+            <div class="code-line violet"></div>
+            <div class="code-line long"></div>
+          </div>
+
+          <div class="floating-card top">
+            <strong>Full-stack workflow</strong>
+            <span>UI → API → Database</span>
+          </div>
+
+          <div class="floating-card bottom">
+            <strong>Built to ship</strong>
+            <span>GitHub + Render deployment</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-kicker">About me</div>
+        <h2 class="section-title reveal">Building useful products, not just pretty pages.</h2>
+        <p class="section-copy reveal">
+          My work combines interface design with real application logic. I enjoy
+          taking an idea from a blank page through frontend development, backend
+          integration, data modelling, authentication and deployment.
+        </p>
+
+        <div class="about-grid">
+          <div class="glass-card about-card reveal">
+            <h3>What I focus on</h3>
+            <p>
+              Responsive interfaces, understandable user flows, maintainable
+              JavaScript, API integration, authentication, database-backed
+              applications and end-to-end product development.
+            </p>
+          </div>
+
+          <div class="glass-card about-card reveal" id="stack">
+            <h3>Technology stack</h3>
+            <div class="stack">
+              <span class="chip">HTML5</span>
+              <span class="chip">CSS3</span>
+              <span class="chip">JavaScript</span>
+              <span class="chip">Node.js</span>
+              <span class="chip">Express.js</span>
+              <span class="chip">PostgreSQL</span>
+              <span class="chip">REST APIs</span>
+              <span class="chip">Git</span>
+              <span class="chip">GitHub</span>
+              <span class="chip">Render</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="project">
+      <div class="container">
+        <div class="section-kicker">Featured project</div>
+        <h2 class="section-title reveal">ZiqTech — Full-Stack E-Commerce Platform.</h2>
+        <p class="section-copy reveal">
+          A technology e-commerce application built from scratch with customer
+          shopping flows, product management, authentication, order processing and
+          a PostgreSQL-backed backend.
+        </p>
+
+        <article class="glass-card project reveal">
+          <div class="project-visual">
+            <div class="browser">
+              <div class="browser-top">
+                <i></i><i></i><i></i>
+              </div>
+              <div class="browser-body">
+                <div class="browser-copy">
+                  <small>ZIQTECH</small>
+                  <h4>Technology.<br>Reimagined.</h4>
+                  <p>
+                    Premium technology shopping with product variants,
+                    stock-aware cart logic and customer accounts.
+                  </p>
+                </div>
+                <div class="browser-product">
+                  <div class="device"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-content">
+            <div>
+              <h3>More than a storefront.</h3>
+              <p>
+                ZiqTech includes customer and admin authentication, dynamic product
+                variants, stock management, cart and wishlist flows, checkout,
+                order tracking, invoices, customer profiles and a dedicated admin
+                dashboard.
+              </p>
+
+              <div class="project-actions">
+                <a class="btn btn-primary" href="https://ziqtech-e-commerce.onrender.com" target="_blank" rel="noreferrer">
+                  Live Demo ↗
+                </a>
+                <a class="btn btn-secondary" href="https://github.com/HaziqHanif/ZiqTech-E-Commerce" target="_blank" rel="noreferrer">
+                  View Source ↗
+                </a>
+              </div>
+            </div>
+
+            <div class="feature-grid">
+              <div class="feature">Customer & admin authentication</div>
+              <div class="feature">Product variants & stock</div>
+              <div class="feature">Cart & wishlist</div>
+              <div class="feature">Checkout & orders</div>
+              <div class="feature">Invoice generation</div>
+              <div class="feature">Customer profiles</div>
+              <div class="feature">Admin dashboard</div>
+              <div class="feature">PostgreSQL database</div>
+            </div>
+          </div>
+        </article>
+
+        <div class="architecture">
+          <div class="glass-card arch-card reveal">
+            <div class="arch-number">01</div>
+            <h3>Frontend</h3>
+            <p>
+              Responsive HTML, CSS and JavaScript interfaces for product discovery,
+              cart, checkout, account management and administration.
+            </p>
+          </div>
+
+          <div class="glass-card arch-card reveal">
+            <div class="arch-number">02</div>
+            <h3>Backend</h3>
+            <p>
+              Node.js and Express REST endpoints handle authentication, products,
+              users, orders and application business logic.
+            </p>
+          </div>
+
+          <div class="glass-card arch-card reveal">
+            <div class="arch-number">03</div>
+            <h3>Database & deployment</h3>
+            <p>
+              PostgreSQL provides persistent application data while GitHub and
+              Render support source control and live deployment.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="glass-card contact-card reveal">
+          <div class="section-kicker">Let’s connect</div>
+          <h2>See the code.<br><span class="gradient">Try the product.</span></h2>
+          <p>
+            Explore my GitHub profile or open the live ZiqTech deployment to see
+            the project running end-to-end.
+          </p>
+
+          <div class="contact-actions">
+            <a class="btn btn-primary" href="https://github.com/HaziqHanif" target="_blank" rel="noreferrer">
+              GitHub Profile ↗
+            </a>
+            <a class="btn btn-secondary" href="https://ziqtech-e-commerce.onrender.com" target="_blank" rel="noreferrer">
+              Open ZiqTech ↗
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> Haziq Hanif. Built with HTML, CSS & JavaScript.
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+
+    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
